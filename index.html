@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noona Laundry - Ngelaundry Makin Hemat</title>
+    
+    <!-- Font Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- CSS Utama -->
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+    <!-- ====================== HEADER ====================== -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🧺</div>
+                    <div class="logo-text">
+                        NOONA <span class="accent">LAUNDRY</span>
+                    </div>
+                </div>
+
+                <nav class="nav">
+                    <a href="#home" class="nav-link active">Beranda</a>
+                    <a href="#services" class="nav-link">Layanan</a>
+                    <a href="#membership" class="nav-link">Membership</a>
+                    <a href="#promo" class="nav-link">Promo</a>
+                    <a href="#location" class="nav-link">Lokasi</a>
+                </nav>
+
+                <div class="header-actions">
+                    <div id="authContainer" class="auth-container">
+                        <button class="btn-login" id="loginBtn" onclick="openLoginModal()">
+                            <i class="fas fa-user"></i> Masuk
+                        </button>
+                        <div class="user-badge" id="userBadge" style="display: none;">
+                            <div class="user-info" onclick="toggleUserDropdown()">
+                                <div class="user-avatar"><i class="fas fa-user-circle"></i></div>
+                                <div class="user-details">
+                                    <span class="user-name" id="userNameDisplay">Member</span>
+                                    <span class="user-role" id="userRoleDisplay">TORU Member</span>
+                                </div>
+                                <i class="fas fa-chevron-down user-chevron"></i>
+                            </div>
+                            <div class="user-dropdown" id="userDropdown">
+                                <div class="dropdown-header">
+                                    <p class="dropdown-saldo-label">Saldo Membership:</p>
+                                    <p class="dropdown-saldo" id="userSaldoDisplay">Rp 220.000</p>
+                                </div>
+                                <a href="#membership" class="dropdown-item" onclick="closeUserDropdown()"><i class="fas fa-wallet"></i> Top Up Saldo</a>
+                                <button type="button" class="dropdown-item logout-btn" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Keluar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-whatsapp" onclick="orderNow()">
+                        <i class="fab fa-whatsapp"></i> Pesan
+                    </button>
+                    <button class="mobile-toggle" onclick="toggleMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====================== HERO ====================== -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-badge">✨ Laundry Terpercaya</span>
+                    <h1>
+                        Ngelaundry Makin <br>
+                        <span class="accent">Hemat</span>
+                    </h1>
+                    <p class="hero-sub">
+                        Join <strong>TORU MEMBER</strong> sekarang dan dapatkan 
+                        <span class="accent">Cashback sampai 20%</span>
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn-primary" onclick="scrollToSection('membership')">
+                            <i class="fas fa-crown"></i> Join Membership
+                        </button>
+                        <button class="btn-secondary" onclick="orderNow()">
+                            <i class="fab fa-whatsapp"></i> Pesan Laundry
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Pelanggan Puas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">99%</span>
+                            <span class="stat-label">Tepat Waktu</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">4.9⭐</span>
+                            <span class="stat-label">Rating Pelanggan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-illustration">
+                        <div class="floating-card card-1">
+                            <span>🧺</span>
+                            <span>Cuci Bersih</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <span>⭐</span>
+                            <span>Cashback 20%</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <span>👕</span>
+                            <span>Setrika Rapi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== SERVICES ====================== -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Layanan Kami</span>
+                <h2>Semua Kebutuhan <span class="accent">Laundry</span> Kamu</h2>
+                <p>Member bisa digunakan untuk semua layanan Drop Off dan Set Service</p>
+            </div>
+
+            <div class="services-grid" id="servicesGrid">
+                <div class="service-card">
+                    <div class="service-icon">👕</div>
+                    <h3>Cuci Kering</h3>
+                    <p>Cuci bersih, kering harum, siap pakai</p>
+                    <div class="service-price">Rp 8.000<span>/kg</span></div>
+                    <button class="btn-service" onclick="orderService('Cuci Kering', 8000)">
+                        Pesan Sekarang
+                    </button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👔</div>
+                    <h3>Cuci + Setrika</h3>
+                    <p>Cuci bersih + setrika rapi seperti baru</p>
+                    <div class="service-price">Rp 12.000<span>/kg</span></div>
+                    <button class="btn-service" onclick="orderService('Cuci + Setrika', 12000)">
+                        Pesan Sekarang
+                    </button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👗</div>
+                    <h3>Setrika Saja</h3>
+                    <p>Rapikan pakaian yang sudah dicuci</p>
+                    <div class="service-price">Rp 5.000<span>/kg</span></div>
+                    <button class="btn-service" onclick="orderService('Setrika Saja', 5000)">
+                        Pesan Sekarang
+                    </button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Laundry Kilat</h3>
+                    <p>Selesai 3 jam, cocok untuk kebutuhan mendesak</p>
+                    <div class="service-price">Rp 15.000<span>/kg</span></div>
+                    <button class="btn-service" onclick="orderService('Laundry Kilat', 15000)">
+                        Pesan Sekarang
+                    </button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👘</div>
+                    <h3>Laundry Premium</h3>
+                    <p>Dengan pewangi + pewarna pilihan</p>
+                    <div class="service-price">Rp 18.000<span>/kg</span></div>
+                    <button class="btn-service" onclick="orderService('Laundry Premium', 18000)">
+                        Pesan Sekarang
+                    </button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛏️</div>
+                    <h3>Cuci Selimut</h3>
+                    <p>Selimut, bed cover, dan perlengkapan rumah</p>
+                    <div class="service-price">Rp 25.000<span>/buah</span></div>
+                    <button class="btn-service" onclick="orderService('Cuci Selimut', 25000)">
+                        Pesan Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== MEMBERSHIP ====================== -->
+    <section id="membership" class="membership">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">⭐ TORU MEMBER</span>
+                <h2>Join Membership & <span class="accent">Hemat</span> Lebih Banyak</h2>
+                <p>Nikmati cashback sampai 20% untuk semua layanan!</p>
+            </div>
+
+            <div class="membership-grid">
+                <div class="membership-card">
+                    <div class="card-badge">POPULER</div>
+                    <div class="card-icon">💳</div>
+                    <h3>Isi Saldo</h3>
+                    <div class="card-amount">Rp 100.000</div>
+                    <div class="card-bonus">
+                        <span class="bonus-label">Dapat</span>
+                        <span class="bonus-value">Rp 110.000</span>
+                    </div>
+                    <div class="card-benefit">
+                        <i class="fas fa-check"></i> Cashback 10%
+                    </div>
+                    <button class="btn-membership" onclick="orderMembership(100000, 110000)">
+                        <i class="fas fa-plus-circle"></i> Pilih Paket
+                    </button>
+                </div>
+
+                <div class="membership-card featured">
+                    <div class="card-badge">BEST DEAL</div>
+                    <div class="card-icon">💳</div>
+                    <h3>Isi Saldo</h3>
+                    <div class="card-amount">Rp 200.000</div>
+                    <div class="card-bonus">
+                        <span class="bonus-label">Dapat</span>
+                        <span class="bonus-value">Rp 220.000</span>
+                    </div>
+                    <div class="card-benefit">
+                        <i class="fas fa-check"></i> Cashback 10%
+                    </div>
+                    <button class="btn-membership" onclick="orderMembership(200000, 220000)">
+                        <i class="fas fa-plus-circle"></i> Pilih Paket
+                    </button>
+                </div>
+
+                <div class="membership-card">
+                    <div class="card-badge">HEMAT</div>
+                    <div class="card-icon">💳</div>
+                    <h3>Isi Saldo</h3>
+                    <div class="card-amount">Rp 500.000</div>
+                    <div class="card-bonus">
+                        <span class="bonus-label">Dapat</span>
+                        <span class="bonus-value">Rp 600.000</span>
+                    </div>
+                    <div class="card-benefit">
+                        <i class="fas fa-check"></i> Cashback 20%
+                    </div>
+                    <button class="btn-membership" onclick="orderMembership(500000, 600000)">
+                        <i class="fas fa-plus-circle"></i> Pilih Paket
+                    </button>
+                </div>
+
+                <div class="membership-card">
+                    <div class="card-badge">VIP</div>
+                    <div class="card-icon">💳</div>
+                    <h3>Isi Saldo</h3>
+                    <div class="card-amount">Rp 799.000</div>
+                    <div class="card-bonus">
+                        <span class="bonus-label">Dapat</span>
+                        <span class="bonus-value">Rp 1.000.000</span>
+                    </div>
+                    <div class="card-benefit">
+                        <i class="fas fa-check"></i> Cashback 25%
+                    </div>
+                    <button class="btn-membership" onclick="orderMembership(799000, 1000000)">
+                        <i class="fas fa-plus-circle"></i> Pilih Paket
+                    </button>
+                </div>
+            </div>
+
+            <div class="membership-note">
+                <i class="fas fa-info-circle"></i>
+                Member bisa digunakan untuk semua layanan Drop Off dan Set Service
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== PROMO ====================== -->
+    <section id="promo" class="promo">
+        <div class="container">
+            <div class="promo-banner">
+                <div class="promo-content">
+                    <div class="promo-icon">🎉</div>
+                    <div class="promo-text">
+                        <span class="promo-tag">PROMO HARI INI</span>
+                        <h2>Cashback Sampai <span class="accent">20%</span></h2>
+                        <p>Untuk semua layanan laundry! <br> Khusus member TORU</p>
+                    </div>
+                    <div class="promo-cta">
+                        <div class="promo-countdown" id="countdown">
+                            <div class="countdown-item">
+                                <span id="hours">12</span>
+                                <label>Jam</label>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="minutes">30</span>
+                                <label>Menit</label>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="seconds">45</span>
+                                <label>Detik</label>
+                            </div>
+                        </div>
+                        <button class="btn-promo" onclick="orderNow()">
+                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== CALCULATOR ====================== -->
+    <section class="calculator">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">💰 Estimasi</span>
+                <h2>Hitung <span class="accent">Biaya</span> Laundry</h2>
+                <p>Masukkan berat dan pilih layanan untuk estimasi harga</p>
+            </div>
+
+            <div class="calculator-card">
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label>Jenis Layanan</label>
+                        <select id="serviceType">
+                            <option value="8000">Cuci Kering (Rp 8.000/kg)</option>
+                            <option value="12000">Cuci + Setrika (Rp 12.000/kg)</option>
+                            <option value="5000">Setrika Saja (Rp 5.000/kg)</option>
+                            <option value="15000">Laundry Kilat (Rp 15.000/kg)</option>
+                            <option value="18000">Laundry Premium (Rp 18.000/kg)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Berat (kg) *Minimal 2kg</label>
+                        <input type="number" id="weight" min="2" step="0.5" placeholder="Masukkan berat laundry" value="2">
+                    </div>
+
+                    <button class="btn-calculate" onclick="calculatePrice()">
+                        <i class="fas fa-calculator"></i> Hitung Total
+                    </button>
+
+                    <div class="calculator-result" id="calcResult" style="display: none;">
+                        <div class="result-row">
+                            <span>Total Biaya</span>
+                            <span class="result-price" id="totalPrice">Rp 0</span>
+                        </div>
+                        <div class="result-row" id="discountRow" style="display: none;">
+                            <span>Diskon 10% (≥10kg)</span>
+                            <span class="result-discount" id="discountAmount">Rp 0</span>
+                        </div>
+                        <div class="result-row total">
+                            <span>Total yang harus dibayar</span>
+                            <span class="result-final" id="finalPrice">Rp 0</span>
+                        </div>
+                        <button class="btn-order" onclick="orderFromCalculator()">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== LOCATION ====================== -->
+    <section id="location" class="location">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">📍 Lokasi</span>
+                <h2>Temukan <span class="accent">Noona Laundry</span></h2>
+                <p>Kunjungi langsung atau pesan online melalui WhatsApp</p>
+            </div>
+
+            <div class="location-grid">
+                <div class="location-info">
+                    <div class="info-card">
+                        <div class="info-icon">📍</div>
+                        <h3>Alamat</h3>
+                        <p>Jl. Laundry No. 123<br>Kota Laundry, 12345</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🕐</div>
+                        <h3>Jam Operasional</h3>
+                        <p>Senin - Sabtu: 08.00 - 20.00</p>
+                        <p>Minggu: 09.00 - 15.00</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📱</div>
+                        <h3>Kontak</h3>
+                        <p><a href="https://wa.me/6281234567890">+62 812-3456-7890</a></p>
+                        <p><a href="mailto:noona@laundry.com">noona@laundry.com</a></p>
+                    </div>
+                    <button class="btn-map" onclick="openMaps()">
+                        <i class="fas fa-map-marker-alt"></i> Buka Google Maps
+                    </button>
+                </div>
+
+                <div class="location-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.765432109876!2d110.12345678901234!3d-7.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1234567890ab%3A0x1234567890abcdef!2sIndonesia!5e0!3m2!1sen!2sid!4v1234567890123"
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== FOOTER ====================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">🧺</div>
+                        <div class="logo-text">
+                            NOONA <span class="accent">LAUNDRY</span>
+                        </div>
+                    </div>
+                    <p>Ngelaundry Makin Hemat dengan Noona Laundry</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Layanan</h4>
+                    <a href="#services">Cuci Kering</a>
+                    <a href="#services">Cuci + Setrika</a>
+                    <a href="#services">Laundry Kilat</a>
+                    <a href="#services">Laundry Premium</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Membership</h4>
+                    <a href="#membership">TORU Member</a>
+                    <a href="#membership">Cashback 20%</a>
+                    <a href="#membership">Isi Saldo</a>
+                    <a href="#membership">Bonus Deposit</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Kontak</h4>
+                    <a href="https://wa.me/6281234567890"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="mailto:noona@laundry.com"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="#location"><i class="fas fa-map-marker-alt"></i> Lokasi</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Noona Laundry. All Rights Reserved.</p>
+                <p class="footer-tagline">@NOONA__LAUNDRY</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====================== LOGIN / REGISTER MODAL ====================== -->
+    <div class="modal-overlay" id="loginModal" onclick="handleOverlayClick(event)">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeLoginModal()" aria-label="Tutup">&times;</button>
+            
+            <div class="modal-header">
+                <div class="modal-icon">🧺</div>
+                <h3 id="authModalTitle">Masuk ke <span class="accent">Noona Laundry</span></h3>
+                <p id="authModalSubtitle">Akses saldo TORU Member & riwayat laundry kamu</p>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Masuk</button>
+                <button type="button" class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')">Daftar Member</button>
+            </div>
+
+            <!-- Alert Notification -->
+            <div class="auth-alert" id="authAlert" style="display: none;"></div>
+
+            <!-- Login Form -->
+            <form id="loginForm" onsubmit="handleLoginSubmit(event)">
+                <div class="auth-form-group">
+                    <label for="loginIdentifier">Nomor WhatsApp / Email</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" id="loginIdentifier" placeholder="08123456789 atau email@domain.com" required autocomplete="username">
+                    </div>
+                </div>
+
+                <div class="auth-form-group">
+                    <label for="loginPassword">Kata Sandi</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="loginPassword" placeholder="Masukkan kata sandi" required autocomplete="current-password">
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('loginPassword', this)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-row-between">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="rememberMe" checked>
+                        <span>Ingat Saya</span>
+                    </label>
+                    <a href="javascript:void(0)" onclick="forgotPasswordNotice()" class="forgot-link">Lupa sandi?</a>
+                </div>
+
+                <button type="submit" class="btn-auth-submit" id="btnSubmitLogin">
+                    <i class="fas fa-sign-in-alt"></i> Masuk Sekarang
+                </button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" onsubmit="handleRegisterSubmit(event)" style="display: none;">
+                <div class="auth-form-group">
+                    <label for="regName">Nama Lengkap</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-id-card input-icon"></i>
+                        <input type="text" id="regName" placeholder="Contoh: Rina Anggraini" required>
+                    </div>
+                </div>
+
+                <div class="auth-form-group">
+                    <label for="regWhatsapp">Nomor WhatsApp</label>
+                    <div class="input-with-icon">
+                        <i class="fab fa-whatsapp input-icon"></i>
+                        <input type="tel" id="regWhatsapp" placeholder="08xxxxxxxxxx" required>
+                    </div>
+                </div>
+
+                <div class="auth-form-group">
+                    <label for="regPassword">Kata Sandi</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="regPassword" placeholder="Minimal 6 karakter" required minlength="6" autocomplete="new-password">
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('regPassword', this)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-auth-submit" id="btnSubmitRegister">
+                    <i class="fas fa-user-plus"></i> Gabung TORU Member
+                </button>
+            </form>
+
+            <!-- Demo Account Hint -->
+            <div class="demo-account-hint">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    <strong>Mode Demo (LocalStorage):</strong><br>
+                    Bisa coba login dengan akun demo: <code>member@noona.com</code> / <code>123456</code> atau daftar akun baru.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification">
+        <i class="fas fa-check-circle toast-icon" id="toastIcon"></i>
+        <span class="toast-message" id="toastMessage">Berhasil!</span>
+    </div>
+
+    <!-- ====================== SCRIPTS ====================== -->
+    <script src="scripts/main.js"></script>
+
+</body>
+</html>
