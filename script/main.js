@@ -322,6 +322,27 @@ function scrollToSection(id) {
     }
 }
 
+// Filter Kategori Layanan / Produk
+function filterServices(category, buttonEl) {
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    filterButtons.forEach(btn => btn.classList.remove("active"));
+    if (buttonEl) {
+        buttonEl.classList.add("active");
+    }
+
+    const cards = document.querySelectorAll("#servicesGrid .service-card");
+    cards.forEach(card => {
+        const cardCategory = card.getAttribute("data-category");
+        if (category === "all" || cardCategory === category) {
+            card.classList.remove("hide");
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+        } else {
+            card.classList.add("hide");
+        }
+    });
+}
+
 function orderNow() {
     const currentUser = JSON.parse(localStorage.getItem("noona_current_user") || "null");
     let text = "Halo Noona Laundry, saya mau pesan jasa laundry.";

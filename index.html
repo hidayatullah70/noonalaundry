@@ -138,8 +138,24 @@
                 <p>Member bisa digunakan untuk semua layanan Drop Off dan Set Service</p>
             </div>
 
+            <!-- Filter Kategori Layanan -->
+            <div class="services-filter">
+                <button type="button" class="filter-btn active" onclick="filterServices('all', this)">
+                    <i class="fas fa-th-large"></i> Semua
+                </button>
+                <button type="button" class="filter-btn" onclick="filterServices('kiloan', this)">
+                    <i class="fas fa-weight-hanging"></i> Kiloan
+                </button>
+                <button type="button" class="filter-btn" onclick="filterServices('kilat', this)">
+                    <i class="fas fa-bolt"></i> Kilat (Express)
+                </button>
+                <button type="button" class="filter-btn" onclick="filterServices('khusus', this)">
+                    <i class="fas fa-star"></i> Satuan / Khusus
+                </button>
+            </div>
+
             <div class="services-grid" id="servicesGrid">
-                <div class="service-card">
+                <div class="service-card" data-category="kiloan">
                     <div class="service-icon">👕</div>
                     <h3>Cuci Kering</h3>
                     <p>Cuci bersih, kering harum, siap pakai</p>
@@ -149,7 +165,7 @@
                     </button>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-category="kiloan">
                     <div class="service-icon">👔</div>
                     <h3>Cuci + Setrika</h3>
                     <p>Cuci bersih + setrika rapi seperti baru</p>
@@ -159,7 +175,7 @@
                     </button>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-category="kiloan">
                     <div class="service-icon">👗</div>
                     <h3>Setrika Saja</h3>
                     <p>Rapikan pakaian yang sudah dicuci</p>
@@ -169,7 +185,7 @@
                     </button>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-category="kilat">
                     <div class="service-icon">⚡</div>
                     <h3>Laundry Kilat</h3>
                     <p>Selesai 3 jam, cocok untuk kebutuhan mendesak</p>
@@ -179,7 +195,7 @@
                     </button>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-category="khusus">
                     <div class="service-icon">👘</div>
                     <h3>Laundry Premium</h3>
                     <p>Dengan pewangi + pewarna pilihan</p>
@@ -189,7 +205,7 @@
                     </button>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-category="khusus">
                     <div class="service-icon">🛏️</div>
                     <h3>Cuci Selimut</h3>
                     <p>Selimut, bed cover, dan perlengkapan rumah</p>
